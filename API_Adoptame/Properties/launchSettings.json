@@ -1,0 +1,33 @@
+﻿{ //Este es el archivo de configuracion para el lanzamiento de la aplicacion, osea ejecutarla
+  //Es un archivo donde hago el lanzamiento de mi aplicaicon se corre bajo un servidor iis
+  //y se abre en en la rita de la url conexcio y se abre un swager que es la documentacion
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:64217",
+      "sslPort": 44371
+    }
+  },
+  "profiles": {
+    "API_Adoptame": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger", //poder ver la documentacion de miAPI
+      "applicationUrl": "https://localhost:7131;http://localhost:5021", //url conexion al browser
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
