@@ -1,10 +1,19 @@
+//el program me sirve a mí para poder correr cuando yo corra el código desde acá es lo primero que hace es que venir a esta clase y poder verificar qué servicios tengo yo acá inyectados para yo poder cumplir con este pipeline. ¿Qué es un pipeline? Es una es una que secuencia de tareas que se ejecutan una tras otra listo. 
+using API_Adoptame.DAL;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+//Esta linea me crea el contexto de la BD a la hora de correr esta API (la o es options => y esto significa tal)
+//Funcionaes anonimas (x => x....) Arrow Functions - Lambda Functions(esos 3 nombres son lo mismo)
+builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddEndpointsApiExplorer();//build.service que sirve para abrirlo en el explorer
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
