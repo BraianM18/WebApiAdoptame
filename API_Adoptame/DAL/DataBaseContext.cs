@@ -23,6 +23,7 @@ namespace API_Adoptame.DAL
         public DbSet<Country> Countries { get; set; }//Esta linea me toma la clase Country y me la mapea en SQL
         //SERVER para crear una tabla llamada COUNTRIES
         //Asi lo hare con todas las tablas.
+        //Por cada nueva entidad que yo cree, debo crearle su DbSet.
 
     }
 }
