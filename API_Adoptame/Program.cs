@@ -1,5 +1,6 @@
 //el program me sirve a mí para poder correr cuando yo corra el código desde acá es lo primero que hace es que venir a esta clase y poder verificar qué servicios tengo yo acá inyectados para yo poder cumplir con este pipeline. ¿Qué es un pipeline? Es una es una que secuencia de tareas que se ejecutan una tras otra listo. 
 using API_Adoptame.DAL;
+using API_Adoptame.DAL.Entities;
 using API_Adoptame.Domain.Interfaces;
 using API_Adoptame.Domain.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<ICountryService, CountryService>();
+builder.Services.AddScoped<IDogBreedService, DogBreedService>();
 //Por cada nuevo servicio/interfaz que yo creo en mi API, debo agregar aquí esa nueva dependencia
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

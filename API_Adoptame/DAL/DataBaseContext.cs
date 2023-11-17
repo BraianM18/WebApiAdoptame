@@ -21,6 +21,8 @@ namespace API_Adoptame.DAL
 
         //Aqui creamos los Dbset: es para convertir las entidades logicas en entidades de tablas en la BD
         public DbSet<Country> Countries { get; set; }//Esta linea me toma la clase Country y me la mapea en SQL
+        public DbSet<DogBreed> DogBreeds { get; set; }    
+       
         //SERVER para crear una tabla llamada COUNTRIES
         //Asi lo hare con todas las tablas.
         //Por cada nueva entidad que yo cree, debo crearle su DbSet.
