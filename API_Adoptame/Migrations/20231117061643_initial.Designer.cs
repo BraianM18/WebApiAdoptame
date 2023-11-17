@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Adoptame.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20231028032646_InitialDb")]
-    partial class InitialDb
+    [Migration("20231117061643_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,28 @@ namespace API_Adoptame.Migrations
                         .IsUnique();
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("API_Adoptame.DAL.Entities.DogBreed", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DogBreeds");
                 });
 #pragma warning restore 612, 618
         }

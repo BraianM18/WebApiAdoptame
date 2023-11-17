@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Adoptame.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,20 @@ namespace API_Adoptame.Migrations
                     table.PrimaryKey("PK_Countries", x => x.Id);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DogBreeds",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DogBreeds", x => x.Id);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Countries_Name",
                 table: "Countries",
@@ -34,6 +48,9 @@ namespace API_Adoptame.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Countries");
+
+            migrationBuilder.DropTable(
+                name: "DogBreeds");
         }
     }
 }

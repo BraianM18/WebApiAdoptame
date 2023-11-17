@@ -10,46 +10,37 @@ namespace API_Adoptame.Domain.Services
         public readonly DataBaseContext _context;
         public DogBreedService(DataBaseContext context)
         {
-
+            _context = context;
         }
+        public async Task<IEnumerable<DogBreed>> GetDogBreedAsync()
+        {
+            //aqui lo que hago es traerme todo los datos que tengo en mi tabla Countries con el metodo ToListAsync()
+            //en la variable nueva countries se conecta al contexto de la BD, va a la tabla countries y me trae una lista de todos los elementos que hay ahi
+            //y los guarda en la variable countries y los retorno, para mostrarlos, ese retorno llega a ICountryService.cs
+            var dogBreeds = await _context.DogBreeds.ToListAsync();
+
+            return dogBreeds;
+            // tambien se puede hacer asi  return var countries = await _context.Countries.ToListAsync();
+            //devuelve un Inumerable de Paises
+        }
+
         public async Task<DogBreed> CreateDogBreedAsync(DogBreed dogBreed)
         {
             try
             {
-                // Lógica de validación: asegurarse de que el nombre de la raza no esté duplicado
-                var existingBreed = await _context.DogBreeds.FirstOrDefaultAsync(b => b.Name == dogBreed.Name);
-                if (existingBreed != null)
-                {
-                    // Puedes personalizar el mensaje de error según tus necesidades
-                    throw new ApplicationException("Ya existe una raza de perro con este nombre.");
-                }
+                dogBreed.Id = Guid.NewGuid(); //Asi se asigna automaticamente un ID a un nuevo registro
+                dogBreed.CreateDate = DateTime.Now;
 
-                // Si la validación pasa, agrega la nueva raza del perro al contexto y guarda los cambios
-                _context.DogBreeds.Add(dogBreed);
-                await _context.SaveChangesAsync();
+                //estos dos siempre se tiene que crear juntos no puede ir uno solo, por que al tener un add tiene que tener un SaveChangesAsync
+                _context.DogBreeds.Add(dogBreed);//Adicionar un nuevo pais, por eso pongo el metodo add y de parametro lo que quiero agregar  (estoy creando el objeto Country en el contexto de mi BD)
+                await _context.SaveChangesAsync();//Aquí ya estoy yendo a la BD para hacer el INSERT en la tabla countries
 
                 return dogBreed;
             }
-            catch (Exception ex)
+            catch (DbUpdateException dbUpdateException)
             {
-                // Manejo de excepciones, registro, etc.
-                throw new ApplicationException("Error al crear la raza del perro.", ex);
-            }
-        }
-
-        public async Task<IEnumerable<DogBreed>> GetDogBreedAsync()
-        {
-            try
-            {
-                // Lógica para obtener todas las razas de perros.
-                var dogBreeds = await _context.DogBreeds.ToListAsync();
-
-                return dogBreeds;
-            }
-            catch (Exception ex)
-            {
-                // Manejo de excepciones, registro, etc.
-                throw new ApplicationException("Error al obtener las razas de perros.", ex);
+                //esta exception me captura un mensaje cuando el pais ya existe(Duplicados)
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
     }
