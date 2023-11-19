@@ -26,6 +26,8 @@ namespace API_Adoptame.DAL
             modelBuilder.Entity<Fundation>().HasIndex(c => c.Email).IsUnique();
             modelBuilder.Entity<Fundation>().HasIndex(c => c.PhoneNumber).IsUnique();
             
+
+
         }
 
         //Aqui creamos los Dbset: es para convertir las entidades logicas en entidades de tablas en la BD
@@ -35,6 +37,7 @@ namespace API_Adoptame.DAL
         public DbSet<Pet> Pets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Fundation> Fundations { get; set; }
+        public DbSet<AdoptionDetail> AdoptionDetails { get; set; }
 
         //SERVER para crear una tabla llamada COUNTRIES
         //Asi lo hare con todas las tablas.

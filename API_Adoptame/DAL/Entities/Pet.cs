@@ -20,11 +20,11 @@ namespace API_Adoptame.DAL.Entities
 
         [Display(Name = "Raza")]
         [MaxLength(20, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
-        public string Race { get; set; }
+        public string? Race { get; set; }
 
 
         [Display(Name = "Edad")]
-        public int Age { get; set; }
+        public int? Age { get; set; }
 
 
         [Display(Name = "Tamaño")]
