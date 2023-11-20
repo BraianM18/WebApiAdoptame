@@ -4,6 +4,9 @@ namespace API_Adoptame.DAL.Entities
 {
     public class Fundation : AuditBase
     {
+        [Display(Name = "ID de la fundación")]
+        public Guid IdFundation { get; set; }
+
         [Display(Name = "Nombre")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]

@@ -4,6 +4,9 @@ namespace API_Adoptame.DAL.Entities
 {
     public class User : AuditBase
     {
+        [Display(Name = "ID de usuario")]
+        public Guid UserId { get; set; }
+
         [Display(Name = "Nombre")]
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
@@ -28,5 +31,7 @@ namespace API_Adoptame.DAL.Entities
         [MaxLength(20, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Password { get; set; }
+
+
     }
 }

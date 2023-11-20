@@ -17,6 +17,8 @@ builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Confi
 
 builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IDogBreedService, DogBreedService>();
+builder.Services.AddScoped<IFundationService, FundationService>();
+
 //Por cada nuevo servicio/interfaz que yo creo en mi API, debo agregar aquí esa nueva dependencia
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
