@@ -11,13 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//Esta linea me crea el contexto de la BD a la hora de correr esta API (la o es options => y esto significa tal)
-//Funcionaes anonimas (x => x....) Arrow Functions - Lambda Functions(esos 3 nombres son lo mismo)
 builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<ICountryService, CountryService>();
-builder.Services.AddScoped<IDogBreedService, DogBreedService>();
+
 builder.Services.AddScoped<IFundationService, FundationService>();
+builder.Services.AddScoped<IAdoptionDetailService, AdoptionDetailService>();
+builder.Services.AddScoped<IPetService, PetService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 //Por cada nuevo servicio/interfaz que yo creo en mi API, debo agregar aquí esa nueva dependencia
 
