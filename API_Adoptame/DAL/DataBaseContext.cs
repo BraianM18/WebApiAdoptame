@@ -15,7 +15,7 @@ namespace API_Adoptame.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Country>().HasIndex(c => c.Name).IsUnique();
+            
 
             //TABLA USUARIO//
             modelBuilder.Entity<User>().HasIndex(c => c.Email).IsUnique(); //Para que solo hayan correos únicos
@@ -28,10 +28,11 @@ namespace API_Adoptame.DAL
             
 
 
+
         }
 
         //Aqui creamos los Dbset: es para convertir las entidades logicas en entidades de tablas en la BD
-        public DbSet<Country> Countries { get; set; }//Esta linea me toma la clase Country y me la mapea en SQL
+        //Esta linea me toma la clase Country y me la mapea en SQL
         public DbSet<Pet> Pets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Fundation> Fundations { get; set; }

@@ -11,13 +11,13 @@ namespace API_Adoptame.DAL.Entities
 
 
         [Display(Name = "Fecha De Adopción")]
-        [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
+        [MaxLength(100, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         public DateTime? AdoptionDate { get; set; }
 
 
 
         [Display(Name = "Fecha De Ingreso")]
-        [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
+        [MaxLength(100, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public DateTime AdmissionDate { get; set; }
 
@@ -27,5 +27,6 @@ namespace API_Adoptame.DAL.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string AdoptionStatus { get; set; }
+        
     }
 }

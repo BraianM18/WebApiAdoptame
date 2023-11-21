@@ -29,11 +29,11 @@ namespace API_Adoptame.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("AdmissionDate")
-                        .HasMaxLength(50)
+                        .HasMaxLength(100)
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("AdoptionDate")
-                        .HasMaxLength(50)
+                        .HasMaxLength(100)
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AdoptionStatus")
@@ -50,53 +50,6 @@ namespace API_Adoptame.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AdoptionDetails");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.Country", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.DogBreed", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DogBreeds");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Fundation", b =>
@@ -117,6 +70,9 @@ namespace API_Adoptame.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid>("IdFundation")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
@@ -156,6 +112,12 @@ namespace API_Adoptame.Migrations
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("FundationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IdFundation")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Kind")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -178,7 +140,14 @@ namespace API_Adoptame.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FundationId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Pets");
                 });
@@ -213,6 +182,9 @@ namespace API_Adoptame.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
@@ -222,6 +194,25 @@ namespace API_Adoptame.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
+                {
+                    b.HasOne("API_Adoptame.DAL.Entities.Fundation", "Fundation")
+                        .WithMany()
+                        .HasForeignKey("FundationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_Adoptame.DAL.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Fundation");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
