@@ -12,7 +12,7 @@ namespace API_Adoptame.Domain.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<Fundation>> GetFundationAsync()
+        public async Task<IEnumerable<Fundation>> GetFundationsAsync()
         {
            
             var fundations = await _context.Fundations.ToListAsync();
@@ -21,7 +21,7 @@ namespace API_Adoptame.Domain.Services
          
         }
 
-        public async Task<Fundation> CreateFundationAsync(Fundation fundation)
+        public async Task<Fundation> CreateFundationsAsync(Fundation fundation)
         {
             try
             {

@@ -12,7 +12,7 @@ namespace API_Adoptame.Domain.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailAsync()
+        public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync()
         {
 
             var adoptionDetail = await _context.AdoptionDetails.ToListAsync();
@@ -21,7 +21,7 @@ namespace API_Adoptame.Domain.Services
 
         }
 
-        public async Task<AdoptionDetail> CreateAdoptionDetailAsync(AdoptionDetail adoptionDetail)
+        public async Task<AdoptionDetail> CreateAdoptionDetailsAsync(AdoptionDetail adoptionDetail)
         {
             try
             {

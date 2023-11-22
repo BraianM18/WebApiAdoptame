@@ -18,7 +18,7 @@ namespace API_Adoptame.Controllers
         [Route("Get")]//Aqui concateno la URL inicial: URL = api/countries/get
         public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailAsync()
         {
-            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailAsync();
+            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsAsync();
 
             if (adoptionDetail == null || !adoptionDetail.Any()) 
             {
@@ -35,7 +35,7 @@ namespace API_Adoptame.Controllers
         {
             try
             {
-                var createdAdoptionDetail = await _adoptionDetailService.CreateAdoptionDetailAsync(adoptionDetail);
+                var createdAdoptionDetail = await _adoptionDetailService.CreateAdoptionDetailsAsync(adoptionDetail);
                 if (createdAdoptionDetail == null)
                 {
                     return NotFound();// = 404 Http Status Code
