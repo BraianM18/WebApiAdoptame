@@ -16,9 +16,9 @@ namespace API_Adoptame.Controllers
 
         [HttpGet, ActionName("Get")]
         [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetAsync()
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsAsync()
         {
-            var pet = await _petService.GetPetAsync();
+            var pet = await _petService.GetPetsAsync();
 
             if (pet == null || !pet.Any())
             {
@@ -31,11 +31,11 @@ namespace API_Adoptame.Controllers
 
         [HttpPost, ActionName("Create")]
         [Route("Create")]
-        public async Task<ActionResult> CreatePetAsync(Pet pet)
+        public async Task<ActionResult> CreatePetsAsync(Pet pet)
         {
             try
             {
-                var createdPet = await _petService.CreatePetAsync(pet);
+                var createdPet = await _petService.CreatePetsAsync(pet);
                 if (createdPet == null)
                 {
                     return NotFound();// = 404 Http Status Code

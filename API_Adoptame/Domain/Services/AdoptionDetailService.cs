@@ -25,7 +25,7 @@ namespace API_Adoptame.Domain.Services
         {
             try
             {
-                adoptionDetail.Id = Guid.NewGuid(); //asi se asigna automaticamente un ID a un nuevo registro
+                adoptionDetail.IDadoptiondetail = Guid.NewGuid(); //asi se asigna automaticamente un ID a un nuevo registro
                 adoptionDetail.CreateDate = DateTime.Now;//lo mismo aqui con fecha de creacion
 
 

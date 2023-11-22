@@ -12,7 +12,7 @@ namespace API_Adoptame.Domain.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<Pet>> GetPetAsync()
+        public async Task<IEnumerable<Pet>> GetPetsAsync()
         {
 
             var pets = await _context.Pets.ToListAsync();
@@ -21,11 +21,11 @@ namespace API_Adoptame.Domain.Services
 
         }
 
-        public async Task<Pet> CreatePetAsync(Pet pet)
+        public async Task<Pet> CreatePetsAsync(Pet pet)
         {
             try
             {
-                pet.Id = Guid.NewGuid();
+                pet.IDpet = Guid.NewGuid();
                 pet.CreateDate = DateTime.Now;
 
 

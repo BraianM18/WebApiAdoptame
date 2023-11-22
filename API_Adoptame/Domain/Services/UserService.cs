@@ -25,7 +25,7 @@ namespace API_Adoptame.Domain.Services
         {
             try
             {
-                user.Id = Guid.NewGuid();
+                user.IDuser = Guid.NewGuid();
                 user.CreateDate = DateTime.Now;
 
 

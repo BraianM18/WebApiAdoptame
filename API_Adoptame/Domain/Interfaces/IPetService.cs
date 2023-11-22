@@ -4,7 +4,7 @@ namespace API_Adoptame.Domain.Interfaces
 {
     public interface IPetService
     {
-        Task<IEnumerable<Pet>> GetPetAsync();
-        Task<Pet> CreatePetAsync(Pet pet);
+        Task<IEnumerable<Pet>> GetPetsAsync();
+        Task<Pet> CreatePetsAsync(Pet pet);
     }
 }
