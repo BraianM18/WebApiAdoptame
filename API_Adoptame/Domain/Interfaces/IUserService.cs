@@ -4,7 +4,7 @@ namespace API_Adoptame.Domain.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUserAsync();
-        Task<User> CreateUserAsync(User user);
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> CreateUsersAsync(User user);
     }
 }

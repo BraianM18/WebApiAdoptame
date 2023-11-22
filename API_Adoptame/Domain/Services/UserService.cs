@@ -12,7 +12,7 @@ namespace API_Adoptame.Domain.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<User>> GetUserAsync()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
 
             var users = await _context.Users.ToListAsync();
@@ -21,7 +21,7 @@ namespace API_Adoptame.Domain.Services
 
         }
 
-        public async Task<User> CreateUserAsync(User user)
+        public async Task<User> CreateUsersAsync(User user)
         {
             try
             {
