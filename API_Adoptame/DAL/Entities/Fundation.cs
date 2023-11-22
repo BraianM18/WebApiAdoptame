@@ -32,5 +32,9 @@ namespace API_Adoptame.DAL.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public int PhoneNumber { get; set; }
+
+
+        //relacion con pets
+        public List<Pet>? Pets { get; set; }
     }
 }

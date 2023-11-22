@@ -33,5 +33,8 @@ namespace API_Adoptame.DAL.Entities
         public string Password { get; set; }
 
 
+        //relacion con pets
+        public List<Pet>? Pets { get; set; }
+
     }
 }

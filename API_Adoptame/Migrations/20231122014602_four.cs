@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Adoptame.Migrations
 {
-    public partial class third : Migration
+    public partial class four : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

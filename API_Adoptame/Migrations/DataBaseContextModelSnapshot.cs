@@ -199,13 +199,13 @@ namespace API_Adoptame.Migrations
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
                 {
                     b.HasOne("API_Adoptame.DAL.Entities.Fundation", "Fundation")
-                        .WithMany()
+                        .WithMany("Pets")
                         .HasForeignKey("FundationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("API_Adoptame.DAL.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Pets")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -213,6 +213,16 @@ namespace API_Adoptame.Migrations
                     b.Navigation("Fundation");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API_Adoptame.DAL.Entities.Fundation", b =>
+                {
+                    b.Navigation("Pets");
+                });
+
+            modelBuilder.Entity("API_Adoptame.DAL.Entities.User", b =>
+                {
+                    b.Navigation("Pets");
                 });
 #pragma warning restore 612, 618
         }
