@@ -7,7 +7,7 @@ namespace API_Adoptame.Domain.Interfaces
         Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync();
         Task<AdoptionDetail> CreateAdoptionDetailsAsync(AdoptionDetail adoptionDetail);
 
-        Task<AdoptionDetail> GetAdoptionDetailByAsync(Guid id);
-        Task GetAdoptionDetailByIdAsync(Guid id);
+        /*Task<AdoptionDetail> GetAdoptionDetailsByAsync(Guid id);
+        Task GetAdoptionDetailByIdAsync(Guid id);*/
     }
 }

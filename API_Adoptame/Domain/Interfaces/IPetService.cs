@@ -6,5 +6,7 @@ namespace API_Adoptame.Domain.Interfaces
     {
         Task<IEnumerable<Pet>> GetPetsAsync();
         Task<Pet> CreatePetsAsync(Pet pet);
+
+        Task<Pet> GetPetsByIdAsync(Guid id);
     }
 }

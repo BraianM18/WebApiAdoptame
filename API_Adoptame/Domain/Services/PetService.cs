@@ -15,9 +15,7 @@ namespace API_Adoptame.Domain.Services
         public async Task<IEnumerable<Pet>> GetPetsAsync()
         {
 
-            var pets = await _context.Pets.ToListAsync();
-
-            return pets;
+            return await _context.Pets.ToListAsync(); 
 
         }
 
@@ -41,5 +39,9 @@ namespace API_Adoptame.Domain.Services
             }
         }
 
+        public async Task<Pet> GetPetsByIdAsync(Guid id)
+        {
+            return await _context.Pets.FirstOrDefaultAsync(p => p.IDpet == id);
+        }
     }
 }

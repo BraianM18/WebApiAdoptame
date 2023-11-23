@@ -41,12 +41,13 @@ namespace API_Adoptame.Domain.Services
             }
         }
 
-        public async Task<AdoptionDetail> GetAdoptionDetailByAsync(Guid id)
+        /*
+        public async Task<AdoptionDetail> GetAdoptionDetailsByAsync(Guid id)
         {
             return await _context.AdoptionDetails.FirstOrDefaultAsync(a => a.IDadoptiondetail == id); //es un método propio del db context (db set)
 
         }
-
+        */
 
     }
 }

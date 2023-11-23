@@ -54,5 +54,25 @@ namespace API_Adoptame.Controllers
         }
 
 
+
+        [HttpGet, ActionName("Get")]
+        [Route("Get/{id}")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByIdAsync(Guid id)
+        {
+            if(id == null) return BadRequest("ID es requerido!");
+            
+
+            var pet = await _petService.GetPetsByIdAsync(id);
+
+            if (pet == null)
+            {
+                return NotFound();
+
+            }
+
+            return Ok(pet);
+        }
+
+
     }
 }

@@ -53,23 +53,23 @@ namespace API_Adoptame.Controllers
             }
         }
 
-        //[HttpGet, ActionName("Get")]
-        //[Route("Get")] 
-        //public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailByIdAsync(Guid IDadoptiondetail)
-        //{
-        //    if (IDadoptiondetail == null)   return BadRequest("El Id es requerido.");
+        /*
+        [HttpGet, ActionName("Get")]
+        [Route("Get")] 
+        public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailsByIdAsync(Guid IDadoptiondetail)
+        {
+            if (IDadoptiondetail == null)   return BadRequest("El Id es requerido.");
             
 
 
-        //    var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailByIdAsync(IDadoptiondetail);
-
-        //    if (adoptionDetail == null) return NotFound();
-
-
-        //    return Ok(adoptionDetail);
-        //}
+           var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByIdAsync(IDadoptiondetail);
+           if (adoptionDetail == null) return NotFound();
 
 
+           return Ok(adoptionDetail);
+        }
+
+        */
 
     }
 }
