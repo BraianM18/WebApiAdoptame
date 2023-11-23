@@ -52,5 +52,24 @@ namespace API_Adoptame.Controllers
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
             }
         }
+
+        //[HttpGet, ActionName("Get")]
+        //[Route("Get")] 
+        //public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailByIdAsync(Guid IDadoptiondetail)
+        //{
+        //    if (IDadoptiondetail == null)   return BadRequest("El Id es requerido.");
+            
+
+
+        //    var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailByIdAsync(IDadoptiondetail);
+
+        //    if (adoptionDetail == null) return NotFound();
+
+
+        //    return Ok(adoptionDetail);
+        //}
+
+
+
     }
 }
