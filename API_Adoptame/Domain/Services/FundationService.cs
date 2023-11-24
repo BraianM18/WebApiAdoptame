@@ -14,21 +14,21 @@ namespace API_Adoptame.Domain.Services
         }
         public async Task<IEnumerable<Fundation>> GetFundationsAsync()
         {
-           
+
             var fundations = await _context.Fundations.ToListAsync();
 
             return fundations;
-         
+
         }
 
         public async Task<Fundation> CreateFundationsAsync(Fundation fundation)
         {
             try
             {
-                fundation.IDfundation = Guid.NewGuid(); 
+                fundation.IDfundation = Guid.NewGuid();
                 fundation.CreateDate = DateTime.Now;
 
-               
+
                 _context.Fundations.Add(fundation);
                 await _context.SaveChangesAsync();
 
@@ -36,10 +36,39 @@ namespace API_Adoptame.Domain.Services
             }
             catch (DbUpdateException dbUpdateException)
             {
-               
+
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
 
+        public async Task<Fundation> GetFundationsByIdAsync(Guid id)
+        {
+            return await _context.Fundations.FirstOrDefaultAsync(f => f.IDfundation == id);
+        }
+
+        public async Task<Fundation> GetFundationsByNameAsync(String name)
+        {
+            return await _context.Fundations.FirstOrDefaultAsync(f => f.Name == name);
+        }
+
+        public async Task<Fundation> EditFundationsAsync(Fundation fundation)
+        {
+            try
+            {
+                
+                fundation.ModifiedDate = DateTime.Now;
+
+
+                _context.Fundations.Update(fundation);//Este metodo me sirve para actualizar un objeto
+                await _context.SaveChangesAsync();
+
+                return fundation;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+        }
     }
 }

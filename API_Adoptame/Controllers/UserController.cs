@@ -54,6 +54,8 @@ namespace API_Adoptame.Controllers
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el usuario.");
             }
         }
+
+
     }
     
 }

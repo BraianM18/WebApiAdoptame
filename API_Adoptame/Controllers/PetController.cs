@@ -1,5 +1,6 @@
 ﻿using API_Adoptame.DAL.Entities;
 using API_Adoptame.Domain.Interfaces;
+using API_Adoptame.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_Adoptame.Controllers
@@ -55,11 +56,14 @@ namespace API_Adoptame.Controllers
 
 
 
-        [HttpGet, ActionName("Get")]
-        [Route("Get/{id}")]//Aqui concateno la URL inicial: URL = api/pet/get
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetByIdAsync(Guid id)
+        [HttpGet, ActionName("GetById")]
+        [Route("GetById/{id}")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByIdAsync(Guid id)
         {
-            if(id == null) return BadRequest("ID es requerido!");
+            if (id == null)
+            {
+                return BadRequest("ID es requerido!");
+            } 
             
 
             var pet = await _petService.GetPetsByIdAsync(id);
@@ -73,6 +77,31 @@ namespace API_Adoptame.Controllers
             return Ok(pet);
         }
 
+        [HttpPut, ActionName("EditPet")]
+        [Route("EditPet")]
+        public async Task<ActionResult> EditFundationsAsync(Pet pet)
+        {
+            try
+            {
+                var editedPet = await _petService.EditPetsAsync(pet);
+                if (editedPet == null)
+                {
+                    return NotFound();// = 404 Http Status Code
+
+                }
+
+                return Ok(editedPet);//Retorne un 200 y el objeto Detalle de adopcion
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("duplicate"))
+                {
+                    return Conflict(String.Format("{0} ya existe", pet.Name));
+                }
+
+                return Conflict(ex.Message);
+            }
+        }
 
     }
 }

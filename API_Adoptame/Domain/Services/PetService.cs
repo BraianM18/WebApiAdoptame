@@ -43,5 +43,25 @@ namespace API_Adoptame.Domain.Services
         {
             return await _context.Pets.FirstOrDefaultAsync(p => p.IDpet == id);
         }
+
+        public async Task<Pet> EditPetsAsync(Pet pet)
+        {
+            try
+            {
+
+                pet.ModifiedDate = DateTime.Now;
+
+
+                _context.Pets.Update(pet);//Este metodo me sirve para actualizar un objeto
+                await _context.SaveChangesAsync();
+
+                return pet;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+        }
     }
 }

@@ -8,5 +8,7 @@ namespace API_Adoptame.Domain.Interfaces
         Task<Pet> CreatePetsAsync(Pet pet);
 
         Task<Pet> GetPetsByIdAsync(Guid id);
+
+        Task<Pet> EditPetsAsync(Pet pet);
     }
 }
