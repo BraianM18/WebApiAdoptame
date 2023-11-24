@@ -9,11 +9,25 @@ namespace API_Adoptame.Controllers
     [Route("api/[controller]")] //esta es la primero parte de la URL de esta API: URL = api/adoptame
     public class PetController : Controller
     {
+
+
+
+
         private readonly IPetService _petService;
+
+
+
+
         public PetController(IPetService petService)
         {
             _petService = petService;
         }
+
+
+
+
+
+        /*GET ALL*/
 
         [HttpGet, ActionName("Get")]
         [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
@@ -29,6 +43,12 @@ namespace API_Adoptame.Controllers
 
             return Ok(pet);
         }
+
+
+
+
+
+        /*CREATE*/
 
         [HttpPost, ActionName("Create")]
         [Route("Create")]
@@ -56,6 +76,10 @@ namespace API_Adoptame.Controllers
 
 
 
+
+
+        /*GET BY ID*/
+
         [HttpGet, ActionName("GetById")]
         [Route("GetById/{id}")]//Aqui concateno la URL inicial: URL = api/pet/get
         public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByIdAsync(Guid id)
@@ -77,9 +101,42 @@ namespace API_Adoptame.Controllers
             return Ok(pet);
         }
 
+
+
+
+
+        /*GET BY NAME*/
+
+        [HttpGet, ActionName("GetByName")]
+        [Route("GetByName/{name}")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByNameAsync(String name)
+        {
+            if (name == null)
+            {
+                return BadRequest("El nombre es requerido!");
+            }
+
+
+            var pet = await _petService.GetPetsByNameAsync(name);
+
+            if (pet == null)
+            {
+                return NotFound();
+
+            }
+
+            return Ok(pet);
+        }
+
+
+
+
+
+        /*UPDATE*/
+
         [HttpPut, ActionName("EditPet")]
         [Route("EditPet")]
-        public async Task<ActionResult> EditFundationsAsync(Pet pet)
+        public async Task<ActionResult> EditPetsAsync(Pet pet)
         {
             try
             {
@@ -102,6 +159,30 @@ namespace API_Adoptame.Controllers
                 return Conflict(ex.Message);
             }
         }
+
+
+
+
+
+        /*DELETE*/
+
+        [HttpDelete, ActionName("Delete")]
+        [Route("Delete")]
+        public async Task<ActionResult<Pet>> DeletePetsAsync(Guid id)
+        {
+
+            if (id == null) return BadRequest("El ID es requerido!");
+                
+            var deletedPet = await _petService.DeletePetsAsync(id);
+
+            if (deletedPet == null) return NotFound("Mascota no encontrada!");
+            return Ok(deletedPet);
+            
+            
+        }
+
+
+
 
     }
 }

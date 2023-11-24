@@ -1,5 +1,6 @@
 ﻿using API_Adoptame.DAL.Entities;
 using API_Adoptame.Domain.Interfaces;
+using API_Adoptame.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_Adoptame.Controllers
@@ -8,11 +9,21 @@ namespace API_Adoptame.Controllers
     [Route("api/[controller]")] //esta es la primero parte de la URL de esta API: URL = api/adoptame
     public class AdoptionDetailController : Controller
     {
+
+
         private readonly IAdoptionDetailService _adoptionDetailService;
+
+
         public AdoptionDetailController(IAdoptionDetailService adoptionDetailService)
         {
             _adoptionDetailService = adoptionDetailService;
         }
+
+
+
+
+
+        /*GET ALL*/
 
         [HttpGet, ActionName("Get")]
         [Route("Get")]//Aqui concateno la URL inicial: URL = api/countries/get
@@ -28,6 +39,13 @@ namespace API_Adoptame.Controllers
 
             return Ok(adoptionDetail); 
         }
+
+
+
+
+
+        /*CREATE*/
+
 
         [HttpPost, ActionName("Create")]
         [Route("Create")]
@@ -53,7 +71,12 @@ namespace API_Adoptame.Controllers
             }
         }
 
-        
+
+
+
+
+        /*GET BY ID*/
+
         [HttpGet, ActionName("GetById")]
         [Route("GetById/{id}")] 
         public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByIdAsync(Guid id)
@@ -70,6 +93,11 @@ namespace API_Adoptame.Controllers
         }
 
 
+
+
+
+        /*GET BY ADOPTION DATE*/
+
         [HttpGet, ActionName("GetByAdoptionDate")]
         [Route("GetByAdoptionDate/{AdoptionDate}")]
         public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByAdoptionDetailAsync(DateTime AdoptionDate)
@@ -83,6 +111,58 @@ namespace API_Adoptame.Controllers
 
 
             return Ok(adoptionDetail);
+        }
+
+
+
+
+
+        /*UPDATE*/
+
+        [HttpPut, ActionName("EditAdoptionDetail")]
+        [Route("EditAdoptionDetail")]
+        public async Task<ActionResult> EditAdoptionDetailsAsync(AdoptionDetail adoptiondetail)
+        {
+            try
+            {
+                var editedadoptiondetail = await _adoptionDetailService.EditAdoptionDetailsAsync(adoptiondetail);
+                if (editedadoptiondetail == null)
+                {
+                    return NotFound();// = 404 Http Status Code
+
+                }
+
+                return Ok(editedadoptiondetail);//Retorne un 200 y el objeto Detalle de adopcion
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("duplicate"))
+                {
+                    return Conflict(String.Format("{0} ya existe", adoptiondetail.IDadoptiondetail));
+                }
+
+                return Conflict(ex.Message);
+            }
+        }
+
+
+
+
+        /*DELETE*/
+
+        [HttpDelete, ActionName("Delete")]
+        [Route("Delete")]
+        public async Task<ActionResult<AdoptionDetail>> DeleteAdoptionDetailsAsync(Guid id)
+        {
+
+            if (id == null) return BadRequest("El ID es requerido!");
+
+            var deletedDetail = await _adoptionDetailService.DeleteAdoptionDetailsAsync(id);
+
+            if (deletedDetail == null) return NotFound("Detalle de adopción no encontrado!");
+            return Ok(deletedDetail);
+
+
         }
 
 

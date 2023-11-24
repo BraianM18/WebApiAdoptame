@@ -7,11 +7,20 @@ namespace API_Adoptame.Controllers
 {
     public class FundationController : Controller
     {
+
+
         private readonly IFundationService _fundationService;
+
+
         public FundationController(IFundationService fundationService)
         {
             _fundationService = fundationService;
         }
+
+
+
+
+        /*GET ALL*/
 
         [HttpGet, ActionName("GetAll")]
         [Route("GetAll")]//Aqui concateno la URL inicial: URL = api/pet/get
@@ -27,6 +36,11 @@ namespace API_Adoptame.Controllers
 
             return Ok(fundation);
         }
+
+
+
+
+        /*CREATE*/
 
         [HttpPost, ActionName("Create")]
         [Route("Create")]
@@ -52,6 +66,11 @@ namespace API_Adoptame.Controllers
             }
         }
 
+
+
+
+        /*GET BY ID*/
+
         [HttpGet, ActionName("GetById")]
         [Route("GetById/{id}")]//Aqui concateno la URL inicial: URL = api/pet/get
         public async Task<ActionResult<IEnumerable<Fundation>>> GetFundationsByIdAsync(Guid id)
@@ -73,6 +92,11 @@ namespace API_Adoptame.Controllers
             return Ok(fundation);
         }
 
+
+
+
+        /*GET BY NAME*/
+
         [HttpGet, ActionName("GetByName")]
         [Route("GetByName/{name}")]//Aqui concateno la URL inicial: URL = api/pet/get
         public async Task<ActionResult<IEnumerable<Fundation>>> GetFundationsByNameAsync(String name)
@@ -93,6 +117,11 @@ namespace API_Adoptame.Controllers
 
             return Ok(fundation);
         }
+
+
+
+
+        /*UPDATE*/
 
         [HttpPut, ActionName("Edit")]
         [Route("Edit")]
@@ -119,5 +148,31 @@ namespace API_Adoptame.Controllers
                 return Conflict(ex.Message);
             }
         }
+
+
+
+
+
+        /*DELETE*/
+
+        [HttpDelete, ActionName("Delete")]
+        [Route("Delete")]
+        public async Task<ActionResult<Fundation>> DeleteFundationsAsync(Guid id)
+        {
+
+            if (id == null) return BadRequest("El ID es requerido!");
+
+            var deletedFundation = await _fundationService.DeleteFundationsAsync(id);
+
+            if (deletedFundation == null) return NotFound("Mascota no encontrada!");
+            return Ok(deletedFundation);
+
+
+        }
+
+
+
+
+
     }
 }
