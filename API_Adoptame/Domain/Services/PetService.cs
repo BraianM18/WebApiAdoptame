@@ -19,14 +19,8 @@ namespace API_Adoptame.Domain.Services
         }
 
 
-        /*GET ALL*/
 
-        public async Task<IEnumerable<Pet>> GetPetsAsync()
-        {
 
-            return await _context.Pets.ToListAsync(); 
-
-        }
 
 
         /*CREATE*/
@@ -50,6 +44,22 @@ namespace API_Adoptame.Domain.Services
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
+
+
+
+
+
+        /*GET ALL*/
+
+        public async Task<IEnumerable<Pet>> GetPetsAsync()
+        {
+
+            return await _context.Pets.ToListAsync(); 
+
+        }
+
+
+        
 
 
         /*GET BY ID*/

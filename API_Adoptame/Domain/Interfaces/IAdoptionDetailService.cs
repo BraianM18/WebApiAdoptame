@@ -5,11 +5,10 @@ namespace API_Adoptame.Domain.Interfaces
     public interface IAdoptionDetailService
     {
 
+        Task<AdoptionDetail> CreateAdoptionDetailsAsync(AdoptionDetail adoptionDetail);
+
 
         Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync();
-
-
-        Task<AdoptionDetail> CreateAdoptionDetailsAsync(AdoptionDetail adoptionDetail);
 
 
         Task<AdoptionDetail> GetAdoptionDetailsByIdAsync(Guid id);

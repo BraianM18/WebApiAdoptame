@@ -20,19 +20,6 @@ namespace API_Adoptame.Domain.Services
 
 
 
-        /*GET ALL*/
-
-        public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync()
-        {
-
-            var adoptionDetail = await _context.AdoptionDetails.ToListAsync();
-
-            return adoptionDetail;
-
-        }
-
-
-
 
         /*CREATE*/
 
@@ -56,9 +43,25 @@ namespace API_Adoptame.Domain.Services
             }
         }
 
-        
 
 
+
+
+        /*GET ALL*/
+
+        public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync()
+        {
+
+            var adoptionDetail = await _context.AdoptionDetails.ToListAsync();
+
+            return adoptionDetail;
+
+        }
+
+
+
+
+  
         /*GET BY ID*/
 
         public async Task<AdoptionDetail> GetAdoptionDetailsByIdAsync(Guid id)

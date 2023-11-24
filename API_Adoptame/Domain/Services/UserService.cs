@@ -16,28 +16,7 @@ namespace API_Adoptame.Domain.Services
 
         public UserService(DataBaseContext context)
         {
-
-
             _context = context;
-
-
-        }
-
-
-
-
-
-        /*GET ALL*/
-
-        public async Task<IEnumerable<User>> GetUsersAsync()
-        {
-
-
-            var users = await _context.Users.ToListAsync();
-
-            return users;
-
-
         }
 
 
@@ -73,6 +52,23 @@ namespace API_Adoptame.Domain.Services
 
 
             }
+
+
+        }
+
+
+
+
+
+        /*GET ALL*/
+
+        public async Task<IEnumerable<User>> GetUsersAsync()
+        {
+
+
+            var users = await _context.Users.ToListAsync();
+
+            return users;
 
 
         }

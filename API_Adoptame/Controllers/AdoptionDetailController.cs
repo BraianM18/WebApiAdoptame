@@ -23,33 +23,12 @@ namespace API_Adoptame.Controllers
 
 
 
-        /*GET ALL*/
-
-        [HttpGet, ActionName("Get")]
-        [Route("Get")]//Aqui concateno la URL inicial: URL = api/countries/get
-        public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailAsync()
-        {
-            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsAsync();
-
-            if (adoptionDetail == null || !adoptionDetail.Any()) 
-            {
-                return NotFound();            
-                
-            }
-
-            return Ok(adoptionDetail); 
-        }
-
-
-
-
-
         /*CREATE*/
 
 
         [HttpPost, ActionName("Create")]
         [Route("Create")]
-        public async Task<ActionResult> CreateAdoptionDetailAsync(AdoptionDetail adoptionDetail) 
+        public async Task<ActionResult> CreateAdoptionDetailAsync(AdoptionDetail adoptionDetail)
         {
             try
             {
@@ -69,6 +48,27 @@ namespace API_Adoptame.Controllers
                 // Puedes devolver un código de error 500 (Internal Server Error) con un mensaje descriptivo
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
             }
+        }
+
+
+
+
+
+        /*GET ALL*/
+
+        [HttpGet, ActionName("Get")]
+        [Route("Get")]//Aqui concateno la URL inicial: URL = api/countries/get
+        public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailAsync()
+        {
+            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsAsync();
+
+            if (adoptionDetail == null || !adoptionDetail.Any()) 
+            {
+                return NotFound();            
+                
+            }
+
+            return Ok(adoptionDetail); 
         }
 
 

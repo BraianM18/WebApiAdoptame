@@ -22,24 +22,6 @@ namespace API_Adoptame.Controllers
 
 
 
-            /*GET ALL*/
-
-            [HttpGet, ActionName("Get")]
-            [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
-            public async Task<ActionResult<IEnumerable<User>>> GetUsersAsync()
-            {
-                var user = await _userService.GetUsersAsync();
-
-                if (user == null || !user.Any())
-                {
-                    return NotFound();
-
-                }
-
-                return Ok(user);
-            }
-
-
 
 
             /*CREATE*/
@@ -67,6 +49,28 @@ namespace API_Adoptame.Controllers
                     return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el usuario.");
                 }
             }
+
+
+
+
+
+            /*GET ALL*/
+
+            [HttpGet, ActionName("Get")]
+            [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
+            public async Task<ActionResult<IEnumerable<User>>> GetUsersAsync()
+            {
+                var user = await _userService.GetUsersAsync();
+
+                if (user == null || !user.Any())
+                {
+                    return NotFound();
+
+                }
+
+                return Ok(user);
+            }
+
 
 
 

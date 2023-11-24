@@ -26,28 +26,6 @@ namespace API_Adoptame.Controllers
 
 
 
-
-        /*GET ALL*/
-
-        [HttpGet, ActionName("Get")]
-        [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsAsync()
-        {
-            var pet = await _petService.GetPetsAsync();
-
-            if (pet == null || !pet.Any())
-            {
-                return NotFound();
-
-            }
-
-            return Ok(pet);
-        }
-
-
-
-
-
         /*CREATE*/
 
         [HttpPost, ActionName("Create")]
@@ -72,6 +50,27 @@ namespace API_Adoptame.Controllers
                 // Puedes devolver un código de error 500 (Internal Server Error) con un mensaje descriptivo
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
             }
+        }
+
+
+
+
+
+        /*GET ALL*/
+
+        [HttpGet, ActionName("Get")]
+        [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsAsync()
+        {
+            var pet = await _petService.GetPetsAsync();
+
+            if (pet == null || !pet.Any())
+            {
+                return NotFound();
+
+            }
+
+            return Ok(pet);
         }
 
 

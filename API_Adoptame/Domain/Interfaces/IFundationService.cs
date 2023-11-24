@@ -4,11 +4,10 @@ namespace API_Adoptame.Domain.Interfaces
 {
     public interface IFundationService
     {
+        Task<Fundation> CreateFundationsAsync(Fundation fundation);
+
 
         Task<IEnumerable<Fundation>> GetFundationsAsync();
-
-
-        Task<Fundation> CreateFundationsAsync(Fundation fundation);
 
 
         Task<Fundation> GetFundationsByIdAsync(Guid id);

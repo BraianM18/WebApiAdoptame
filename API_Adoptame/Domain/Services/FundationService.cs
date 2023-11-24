@@ -20,19 +20,6 @@ namespace API_Adoptame.Domain.Services
 
 
 
-        /*GET ALL*/
-
-        public async Task<IEnumerable<Fundation>> GetFundationsAsync()
-        {
-
-            var fundations = await _context.Fundations.ToListAsync();
-
-            return fundations;
-
-        }
-
-
-
 
         /*CREATE*/
 
@@ -59,6 +46,22 @@ namespace API_Adoptame.Domain.Services
 
 
 
+
+        /*GET ALL*/
+
+        public async Task<IEnumerable<Fundation>> GetFundationsAsync()
+        {
+
+            var fundations = await _context.Fundations.ToListAsync();
+
+            return fundations;
+
+        }
+
+
+
+
+        
         /*GET BY ID*/
 
         public async Task<Fundation> GetFundationsByIdAsync(Guid id)

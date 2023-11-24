@@ -20,25 +20,6 @@ namespace API_Adoptame.Controllers
 
 
 
-        /*GET ALL*/
-
-        [HttpGet, ActionName("GetAll")]
-        [Route("GetAll")]//Aqui concateno la URL inicial: URL = api/pet/get
-        public async Task<ActionResult<IEnumerable<Fundation>>> GetFundationsAsync()
-        {
-            var fundation = await _fundationService.GetFundationsAsync();
-
-            if (fundation == null || !fundation.Any())
-            {
-                return NotFound();
-
-            }
-
-            return Ok(fundation);
-        }
-
-
-
 
         /*CREATE*/
 
@@ -65,6 +46,28 @@ namespace API_Adoptame.Controllers
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear la fundación.");
             }
         }
+
+
+
+
+
+        /*GET ALL*/
+
+        [HttpGet, ActionName("GetAll")]
+        [Route("GetAll")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Fundation>>> GetFundationsAsync()
+        {
+            var fundation = await _fundationService.GetFundationsAsync();
+
+            if (fundation == null || !fundation.Any())
+            {
+                return NotFound();
+
+            }
+
+            return Ok(fundation);
+        }
+
 
 
 
