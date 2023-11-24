@@ -56,7 +56,7 @@ namespace API_Adoptame.Controllers
         
         [HttpGet, ActionName("Get")]
         [Route("Get/{id}")] 
-        public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailsByIdAsync(Guid id)
+        public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByIdAsync(Guid id)
         {
             if (id == null)   return BadRequest("El Id es requerido.");
             
@@ -69,7 +69,22 @@ namespace API_Adoptame.Controllers
            return Ok(adoptionDetail);
         }
 
-        
+
+        [HttpGet, ActionName("Get")]
+        [Route("Get/{adoption date}")]
+        public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByAdoptionDetailAsync(DateTime AdoptionDate)
+        {
+            if (AdoptionDate == null) return BadRequest("La Fecha de Adopción es requerido.");
+            //una fecha puede ser null(?
+
+
+            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByAdoptionDateAsync(AdoptionDate);
+            if (adoptionDetail == null) return NotFound();
+
+
+            return Ok(adoptionDetail);
+        }
+
 
     }
 }

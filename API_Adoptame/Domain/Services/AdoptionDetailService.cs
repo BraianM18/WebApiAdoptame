@@ -47,7 +47,12 @@ namespace API_Adoptame.Domain.Services
             return await _context.AdoptionDetails.FirstOrDefaultAsync(a => a.IDadoptiondetail == id); //es un método propio del db context (db set)
 
         }
-        
 
+      
+
+        public async Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate)
+        {
+            return await _context.AdoptionDetails.FirstOrDefaultAsync(x => x.AdoptionDate == AdoptionDate);
+        }
     }
 }
