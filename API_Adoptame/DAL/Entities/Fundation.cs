@@ -33,5 +33,9 @@ namespace API_Adoptame.DAL.Entities
         [Display(Name = "Teléfono")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public int PhoneNumber { get; set; }
+
+
+        [Display(Name = "Mascotas")]
+        public ICollection<Pet>? Pets { get; set; }
     }
 }

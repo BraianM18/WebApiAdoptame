@@ -4,6 +4,7 @@ using API_Adoptame.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Adoptame.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20231125021209_FKcreations")]
+    partial class FKcreations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace API_Adoptame.Migrations
 
                     b.HasIndex("PetID");
 
-                    b.ToTable("AdoptionDetails", (string)null);
+                    b.ToTable("AdoptionDetails");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Fundation", b =>
@@ -96,7 +98,7 @@ namespace API_Adoptame.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Fundations", (string)null);
+                    b.ToTable("Fundations");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
@@ -145,7 +147,7 @@ namespace API_Adoptame.Migrations
 
                     b.HasIndex("UserID");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.User", b =>
@@ -186,7 +188,7 @@ namespace API_Adoptame.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.AdoptionDetail", b =>

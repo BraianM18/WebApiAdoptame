@@ -34,5 +34,9 @@ namespace API_Adoptame.DAL.Entities
         [MaxLength(20, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Password { get; set; }
+
+
+        [Display(Name = "Mascotas")]
+        public ICollection<Pet>? Pets { get; set; }
     }
 }

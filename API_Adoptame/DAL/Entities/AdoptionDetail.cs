@@ -25,5 +25,10 @@ namespace API_Adoptame.DAL.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} debe tener un máximo de {1} caracteres")]
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string AdoptionStatus { get; set; }
+
+
+        public Pet? Pet { get; set; }
+        [Display(Name = "ID de la Mascota")]
+        public Guid PetID { get; set; } //FK  
     }
 }
