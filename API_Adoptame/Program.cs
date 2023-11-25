@@ -1,4 +1,5 @@
 //el program me sirve a mí para poder correr cuando yo corra el código desde acá es lo primero que hace es que venir a esta clase y poder verificar qué servicios tengo yo acá inyectados para yo poder cumplir con este pipeline. ¿Qué es un pipeline? Es una es una que secuencia de tareas que se ejecutan una tras otra listo. 
+using Adoptame.DAL;
 using API_Adoptame.DAL;
 using API_Adoptame.DAL.Entities;
 using API_Adoptame.Domain.Interfaces;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFundationService, FundationService>();
 builder.Services.AddScoped<IAdoptionDetailService, AdoptionDetailService>();
+builder.Services.AddTransient<SeederDB>();
 
 //Por cada nuevo servicio/interfaz que yo creo en mi API, debo agregar aquí esa nueva dependencia
 
@@ -29,6 +31,23 @@ builder.Services.AddEndpointsApiExplorer();//build.service que sirve para abrirl
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+SeederData();
+
+void SeederData()
+{
+    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+    using (IServiceScope? scope = scopedFactory.CreateScope())
+    {
+        SeederDB? service = scope.ServiceProvider.GetService<SeederDB>();
+        service.SeederAsync().Wait();
+
+    }
+
+}
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
