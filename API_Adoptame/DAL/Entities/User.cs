@@ -36,7 +36,7 @@ namespace API_Adoptame.DAL.Entities
         public string Password { get; set; }
 
 
-        [Display(Name = "Mascotas")]
-        public ICollection<Pet>? Pets { get; set; }
+        /*[Display(Name = "Mascotas")]
+        public ICollection<Pet>? Pets { get; set; }*/
     }
 }

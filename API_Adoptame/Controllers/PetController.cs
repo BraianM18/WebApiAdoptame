@@ -51,11 +51,76 @@ namespace API_Adoptame.Controllers
                 return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
             }
         }
+        
+
+       /* [HttpGet, ActionName("Get")]
+        [Route("Get")]//Aqui concateno la URL inicial: URL = api/pet/get
+        public async Task<ActionResult<IEnumerable<Pet>>> GetPetsByFundationsIdAsync(Guid fundationId)
+        {
+            var pet = await _petService.GetPetsByFundationsIdAsync(fundationId);
+
+            if (pet == null || !pet.Any())
+            {
+                return NotFound();
+
+            }
+
+            return Ok(pet);
+        }
 
 
 
+        [HttpPost, ActionName("Create")]
+        [Route("Create")]
+        public async Task<ActionResult> CreatePetsAsync(Pet pet, Guid fundationId, Guid userId)
+        {
+            try
+            {
+                var createdPet = await _petService.CreatePetsAsync(pet, fundationId, userId);
+                if (createdPet == null)
+                {
+                    return NotFound();// = 404 Http Status Code
+
+                }
+
+                return Ok(createdPet);//Retorne un 200 y el objeto Detalle de adopcion
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al crear el detalle de adopción: {ex.Message}");
+
+                // Puedes devolver un código de error 500 (Internal Server Error) con un mensaje descriptivo
+                return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
+            }
+        }
 
 
+
+        [HttpPut, ActionName("EditPet")]
+        [Route("EditPet")]
+        public async Task<ActionResult> EditPetsAsync(Pet pet, Guid fundationId)
+        {
+            try
+            {
+                var editedPet = await _petService.EditPetsAsync(pet,fundationId);
+                if (editedPet == null)
+                {
+                    return NotFound();// = 404 Http Status Code
+
+                }
+
+                return Ok(editedPet);//Retorne un 200 y el objeto Detalle de adopcion
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("duplicate"))
+                {
+                    return Conflict(String.Format("{0} ya existe", pet.Name));
+                }
+
+                return Conflict(ex.Message);
+            }
+        }*/
         /*GET ALL*/
 
         [HttpGet, ActionName("Get")]
@@ -72,7 +137,7 @@ namespace API_Adoptame.Controllers
 
             return Ok(pet);
         }
-
+        
 
 
 
@@ -158,7 +223,7 @@ namespace API_Adoptame.Controllers
                 return Conflict(ex.Message);
             }
         }
-
+        
 
 
 

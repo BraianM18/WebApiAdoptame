@@ -1,150 +1,181 @@
 ﻿using API_Adoptame.DAL;
 using API_Adoptame.DAL.Entities;
-using System.Net;
-using System.Xml.Linq;
 
-namespace Adoptame.DAL
+
+namespace AvailabilityRooms.DAL;
+
+public class SeederDB
 {
-    public class SeederDB
+    private readonly DataBaseContext _context;
+
+    public SeederDB(DataBaseContext context)
     {
-        private readonly DataBaseContext _context;
-
-        public SeederDB(DataBaseContext context)
-        {
-            _context = context;
-        }
-
-        //Crearemos un metodo SeederAsync
-        //Este método es una especie de MAIN()
-        //Este metodo tendra la responsabilidad de prepoblar mis diferentes tablas de la BD
-
-        public async Task SeederAsync()
-        {
-            //Primero agregare un metodo propio de EntityFramework que hace las veces del comando 'update-database'
-            //En otras palabras: un metodo que me creara la BD inmediatamente ponga en ejecucion mi API
-            await _context.Database.EnsureCreatedAsync();
-
-            //A partir de aqui vamosa  ir creando metodos que me srivan para prepoblar mi BD
-            await PopulateFundationsAsync();
-
-            await _context.SaveChangesAsync(); //esta linea me guarda los datos en la BD
-        }
-
-
-
-        #region Private Methos
-
-        private async Task PopulateFundationsAsync()
-        {
-            //El metodo Any() me indica si la tabla tiene al menos un registro
-            //el metodo Any negado (!) me indica que no hay absolutamente nada en la tabla Fundation
-            if (_context.Fundations.Any())
-            {
-                //Asi creo yo una fundacion con sus respectivas mascotas
-                _context.Fundations.Add(new Fundation
-                {
-                    Name = "Huellitas",
-                    Email = "huellitas@hotmail.com",
-                    Address = "Via Santa Elena",
-                    PhoneNumber = 121324344,
-                    Pets = new List<Pet>()
-                    {
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Leo",
-                            Kind = "Perro",
-                            Race = "Labrador",
-                            Age = 2,
-                            Size = "Grande"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Toby",
-                            Kind = "Gato",
-                            Race = "Siames",
-                            Age = 3,
-                            Size = "Pequeño"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Lucy",
-                            Kind = "Gato",
-                            Race = "Meico",
-                            Age = 3,
-                            Size = "Mediana"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Zeus",
-                            Kind = "Perro",
-                            Race = "Pitbull",
-                            Age = 4,
-                            Size = "Grande"
-                        }
-
-                    }
-                });
-
-                _context.Fundations.Add(new Fundation
-                {
-                    Name = "Almas del cielo",
-                    Email = "Almasdelcielo@hotmail.com",
-                    Address = "Ruta 2",
-                    PhoneNumber = 143543632,
-                    Pets = new List<Pet>()
-                    {
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Mia",
-                            Kind = "Gato",
-                            Race = "Siames",
-                            Age = 6,
-                            Size = "Pequeña"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Apolo",
-                            Kind = "Gato",
-                            Race = "Criollo",
-                            Age = 4,
-                            Size = "Pequeño"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Sam",
-                            Kind = "Perro",
-                            Race = "Husky",
-                            Age = 2,
-                            Size = "Mediano"
-                        },
-
-                        new Pet
-                        {
-                            CreateDate = DateTime.Now,
-                            Name = "Mailo",
-                            Kind = "Perro",
-                            Race = "Chiguagua",
-                            Age = 5,
-                            Size = "pequeño"
-                        }
-
-                    }
-                });
-            }
-        }
-
-        #endregion
+        _context = context;
     }
+
+
+
+    public async Task SeederAsync()
+    {
+        await _context.Database.EnsureCreatedAsync();
+
+        await PopulateFundationsAsync();
+
+        await _context.SaveChangesAsync();
+    }
+
+
+    private async Task PopulateFundationsAsync()
+    {
+        if (!_context.Fundations.Any())
+        {
+
+            /*FUNDACIONES*/
+            _context.Fundations.Add(new Fundation
+            {
+                CreateDate = DateTime.Now,
+                Name = "CorazonesDeHierro",
+                Email = "CorazonesDeHierro@gmail.com",
+                Address = "la dalia marinilla",
+                PhoneNumber = 5741413
+
+            });
+
+
+            _context.Fundations.Add(new Fundation
+            {
+                CreateDate = DateTime.Now,
+                Name = "Pepitas",
+                Email = "Pepitas@gmail.com",
+                Address = "Bello Antioquia",
+                PhoneNumber = 5748591
+
+            });
+
+
+            _context.Fundations.Add(new Fundation
+            {
+                CreateDate = DateTime.Now,
+                Name = "GordoBachicha",
+                Email = "GordoBachicha@hotmail.com",
+                Address = "Rionegro Antioquia",
+                PhoneNumber = 5741462
+
+            });
+
+            /*MASCOTAS*/
+            _context.Pets.Add(new Pet
+            {
+                Name = "Romeo",
+                Kind = "Gato",
+                Race = "Persa",
+                Age = 10,
+                Size = "Mediano",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.Pets.Add(new Pet
+            {
+                Name = "Julieta",
+                Kind = "Gato",
+                Race = "unknown",
+                Age = 5,
+                Size = "Pequeño",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.Pets.Add(new Pet
+            {
+                Name = "Blanquito",
+                Kind = "Gato",
+                Race = "khao Manee",
+                Age = 12,
+                Size = "Mediano",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.Pets.Add(new Pet
+            {
+                Name = "Negrita",
+                Kind = "Gato",
+                Race = "Bombay",
+                Age = 7,
+                Size = "Pequeño",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.Pets.Add(new Pet
+            {
+                Name = "felix",
+                Kind = "Gato",
+                Race = "Británico",
+                Age = 15,
+                Size = "Grande",
+                CreateDate = DateTime.Now
+
+            });
+
+
+            /*USUARIOS*/
+            _context.Users.Add(new User
+            {
+                Name = "Alejo",
+                Email = "Alejo@gmail.com",
+                PhoneNumber = 5742536,
+                Password = "lerolerocandelero"
+
+            });
+
+            _context.Users.Add(new User
+            {
+                Name = "Angie",
+                Email = "Angie@gmail.com",
+                PhoneNumber = 5896415,
+                Password = "fnaf"
+
+            });
+
+            _context.Users.Add(new User
+            {
+                Name = "braian",
+                Email = "braian@gmail.com",
+                PhoneNumber = 5749685,
+                Password = "papupapu"
+
+            });
+
+            /*DETALLES DE ADOPCION*/
+            _context.AdoptionDetails.Add(new AdoptionDetail
+            {
+                AdoptionDate = DateTime.Now,
+                AdmissionDate = DateTime.Now,
+                AdoptionStatus = "Adoptado",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.AdoptionDetails.Add(new AdoptionDetail
+            {
+                AdoptionDate = null,
+                AdmissionDate = DateTime.Now,
+                AdoptionStatus = "No Adoptado",
+                CreateDate = DateTime.Now
+
+            });
+
+            _context.AdoptionDetails.Add(new AdoptionDetail
+            {
+                AdoptionDate = null,
+                AdmissionDate = DateTime.Now,
+                AdoptionStatus = "En Trámite",
+                CreateDate = DateTime.Now
+
+            });
+        }
+    }//
 }
+

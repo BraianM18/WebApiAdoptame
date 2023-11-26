@@ -36,7 +36,7 @@ namespace API_Adoptame.DAL.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Size { get; set; }
 
-        public Fundation? Fundation { get; set; }
+        /*public Fundation? Fundation { get; set; }
 
         [Display(Name = "ID de la Fundación")]
         public Guid FundationID { get; set; } //FK
@@ -50,6 +50,6 @@ namespace API_Adoptame.DAL.Entities
 
 
         [Display(Name = "Detalle de adopcion")]
-        public ICollection<AdoptionDetail>? AdoptionDetails { get; set; }
+        public ICollection<AdoptionDetail>? AdoptionDetails { get; set; }*/
     }
 }

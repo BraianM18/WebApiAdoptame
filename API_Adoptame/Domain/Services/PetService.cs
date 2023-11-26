@@ -18,8 +18,64 @@ namespace API_Adoptame.Domain.Services
             _context = context;
         }
 
+        /*public async Task<IEnumerable<Pet>> GetPetsByFundationsIdAsync(Guid fundationId)
+        {
+ 
+
+            return await _context.Pets.Where(f => f.FundationID == fundationId).ToListAsync();
+            
+        }
+        public async Task<Pet> CreatePetsAsync(Pet pet, Guid fundationId, Guid userId)
+        {
 
 
+            try
+            {
+                pet.IDpet = Guid.NewGuid();
+                pet.CreateDate = DateTime.Now;
+                pet.FundationID = fundationId;
+                pet.UserID = userId;
+                pet.Fundation = await _context.Fundations.FirstOrDefaultAsync(f => f.IDfundation == fundationId);
+                pet.User = await _context.Users.FirstOrDefaultAsync(u => u.IDuser == userId);
+                
+                pet.ModifiedDate = null;
+
+                _context.Pets.Add(pet);
+
+                await _context.SaveChangesAsync();
+
+                return pet;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+
+
+        }
+        public async Task<Pet> EditPetsAsync(Pet pet, Guid fundationId)
+        {
+
+
+            try
+            {
+
+                pet.ModifiedDate = DateTime.Now;
+
+                _context.Pets.Update(pet);//Este metodo me sirve para actualizar un objeto
+                await _context.SaveChangesAsync();
+
+                return pet;
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+
+                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+            }
+
+
+        }*/
 
 
 
@@ -45,7 +101,7 @@ namespace API_Adoptame.Domain.Services
             }
         }
 
-
+        
 
 
 
@@ -99,7 +155,7 @@ namespace API_Adoptame.Domain.Services
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
-
+        
 
         /*DELETE*/
 

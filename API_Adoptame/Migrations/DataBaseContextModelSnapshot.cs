@@ -45,14 +45,9 @@ namespace API_Adoptame.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PetID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("IDadoptiondetail");
 
-                    b.HasIndex("PetID");
-
-                    b.ToTable("AdoptionDetails", (string)null);
+                    b.ToTable("AdoptionDetails");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Fundation", b =>
@@ -96,7 +91,7 @@ namespace API_Adoptame.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Fundations", (string)null);
+                    b.ToTable("Fundations");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
@@ -110,9 +105,6 @@ namespace API_Adoptame.Migrations
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<Guid>("FundationID")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Kind")
                         .IsRequired()
@@ -136,16 +128,9 @@ namespace API_Adoptame.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<Guid>("UserID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("IDpet");
 
-                    b.HasIndex("FundationID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
                 });
 
             modelBuilder.Entity("API_Adoptame.DAL.Entities.User", b =>
@@ -186,52 +171,7 @@ namespace API_Adoptame.Migrations
                     b.HasIndex("PhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.AdoptionDetail", b =>
-                {
-                    b.HasOne("API_Adoptame.DAL.Entities.Pet", "Pet")
-                        .WithMany("AdoptionDetails")
-                        .HasForeignKey("PetID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pet");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
-                {
-                    b.HasOne("API_Adoptame.DAL.Entities.Fundation", "Fundation")
-                        .WithMany("Pets")
-                        .HasForeignKey("FundationID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API_Adoptame.DAL.Entities.User", "User")
-                        .WithMany("Pets")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Fundation");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.Fundation", b =>
-                {
-                    b.Navigation("Pets");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.Pet", b =>
-                {
-                    b.Navigation("AdoptionDetails");
-                });
-
-            modelBuilder.Entity("API_Adoptame.DAL.Entities.User", b =>
-                {
-                    b.Navigation("Pets");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
