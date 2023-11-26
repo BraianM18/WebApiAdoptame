@@ -35,7 +35,7 @@ namespace API_Adoptame.DAL.Entities
         public int PhoneNumber { get; set; }
 
 
-        /*[Display(Name = "Mascotas")]
-        public ICollection<Pet>? Pets { get; set; }*/
+        [Display(Name = "Mascotas")]
+        public List<Pet>? Pets { get; set; }
     }
 }

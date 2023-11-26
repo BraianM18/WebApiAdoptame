@@ -33,90 +33,104 @@ public class SeederDB
             /*FUNDACIONES*/
             _context.Fundations.Add(new Fundation
             {
-                CreateDate = DateTime.Now,
-                Name = "CorazonesDeHierro",
-                Email = "CorazonesDeHierro@gmail.com",
-                Address = "la dalia marinilla",
-                PhoneNumber = 5741413
+                Name = "Huellitas",
+                Email = "huellitas@hotmail.com",
+                Address = "Via Santa Elena",
+                PhoneNumber = 121324344,
+                Pets = new List<Pet>()
+                    {
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Leo",
+                            Kind = "Perro",
+                            Race = "Labrador",
+                            Age = 2,
+                            Size = "Grande"
+                        },
 
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Toby",
+                            Kind = "Gato",
+                            Race = "Siames",
+                            Age = 3,
+                            Size = "Pequeño"
+                        },
+
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Lucy",
+                            Kind = "Gato",
+                            Race = "Meico",
+                            Age = 3,
+                            Size = "Mediana"
+                        },
+
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Zeus",
+                            Kind = "Perro",
+                            Race = "Pitbull",
+                            Age = 4,
+                            Size = "Grande"
+                        }
+
+                    }
             });
-
 
             _context.Fundations.Add(new Fundation
             {
-                CreateDate = DateTime.Now,
-                Name = "Pepitas",
-                Email = "Pepitas@gmail.com",
-                Address = "Bello Antioquia",
-                PhoneNumber = 5748591
+                Name = "Almas del cielo",
+                Email = "Almasdelcielo@hotmail.com",
+                Address = "Ruta 2",
+                PhoneNumber = 143543632,
+                Pets = new List<Pet>()
+                    {
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Mia",
+                            Kind = "Gato",
+                            Race = "Siames",
+                            Age = 6,
+                            Size = "Pequeña"
+                        },
 
-            });
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Apolo",
+                            Kind = "Gato",
+                            Race = "Criollo",
+                            Age = 4,
+                            Size = "Pequeño"
+                        },
 
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Sam",
+                            Kind = "Perro",
+                            Race = "Husky",
+                            Age = 2,
+                            Size = "Mediano"
+                        },
 
-            _context.Fundations.Add(new Fundation
-            {
-                CreateDate = DateTime.Now,
-                Name = "GordoBachicha",
-                Email = "GordoBachicha@hotmail.com",
-                Address = "Rionegro Antioquia",
-                PhoneNumber = 5741462
+                        new Pet
+                        {
+                            CreateDate = DateTime.Now,
+                            Name = "Mailo",
+                            Kind = "Perro",
+                            Race = "Chiguagua",
+                            Age = 5,
+                            Size = "pequeño"
+                        }
 
-            });
-
-            /*MASCOTAS*/
-            _context.Pets.Add(new Pet
-            {
-                Name = "Romeo",
-                Kind = "Gato",
-                Race = "Persa",
-                Age = 10,
-                Size = "Mediano",
-                CreateDate = DateTime.Now
-
-            });
-
-            _context.Pets.Add(new Pet
-            {
-                Name = "Julieta",
-                Kind = "Gato",
-                Race = "unknown",
-                Age = 5,
-                Size = "Pequeño",
-                CreateDate = DateTime.Now
-
-            });
-
-            _context.Pets.Add(new Pet
-            {
-                Name = "Blanquito",
-                Kind = "Gato",
-                Race = "khao Manee",
-                Age = 12,
-                Size = "Mediano",
-                CreateDate = DateTime.Now
-
-            });
-
-            _context.Pets.Add(new Pet
-            {
-                Name = "Negrita",
-                Kind = "Gato",
-                Race = "Bombay",
-                Age = 7,
-                Size = "Pequeño",
-                CreateDate = DateTime.Now
-
-            });
-
-            _context.Pets.Add(new Pet
-            {
-                Name = "felix",
-                Kind = "Gato",
-                Race = "Británico",
-                Age = 15,
-                Size = "Grande",
-                CreateDate = DateTime.Now
-
+                    }
             });
 
 

@@ -5,6 +5,7 @@ using API_Adoptame.Domain.Interfaces;
 using API_Adoptame.Domain.Services;
 using AvailabilityRooms.DAL;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,8 @@ builder.Services.AddControllers();
 //Funcionaes anonimas (x => x....) Arrow Functions - Lambda Functions(esos 3 nombres son lo mismo)
 builder.Services.AddDbContext<DataBaseContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddScoped<IPetService, PetService>();
 builder.Services.AddScoped<IUserService, UserService>();
