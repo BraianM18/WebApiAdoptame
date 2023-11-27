@@ -21,39 +21,6 @@ namespace API_Adoptame.Controllers
 
 
 
-
-
-        /*CREATE*/
-
-
-        [HttpPost, ActionName("Create")]
-        [Route("Create")]
-        public async Task<ActionResult> CreateAdoptionDetailAsync(AdoptionDetail adoptionDetail)
-        {
-            try
-            {
-                var createdAdoptionDetail = await _adoptionDetailService.CreateAdoptionDetailsAsync(adoptionDetail);
-                if (createdAdoptionDetail == null)
-                {
-                    return NotFound();// = 404 Http Status Code
-
-                }
-
-                return Ok(createdAdoptionDetail);//Retorne un 200 y el objeto Detalle de adopcion
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error al crear el detalle de adopción: {ex.Message}");
-
-                // Puedes devolver un código de error 500 (Internal Server Error) con un mensaje descriptivo
-                return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
-            }
-        }
-
-
-
-
-
         /*GET ALL*/
 
         [HttpGet, ActionName("GetAll")]
