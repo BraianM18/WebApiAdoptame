@@ -42,15 +42,10 @@ namespace API_Adoptame.DAL.Entities
         [Display(Name = "ID de la Fundación")]
         public Guid FundationID { get; set; } //FK
 
-        //public Fundation? Fundation { get; set; }
-
-        //public User? User { get; set; }
-
-        //[Display(Name = "ID de el usuario")]
-        //public Guid UserID { get; set; } //FK
+        
 
 
-        [Display(Name = "ID de la Adopción")]
+        [Display(Name = "ID detalle de Adopción")]
         
         public Guid? AdoptionDetailId { get; set; } // FK
 

@@ -84,7 +84,7 @@ public class SeederDB
                             Age = 3,
                             Size = "Mediana",
 
-                                AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
@@ -103,7 +103,7 @@ public class SeederDB
                             Age = 4,
                             Size = "Grande",
 
-                               AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
@@ -132,8 +132,9 @@ public class SeederDB
                             Age = 6,
                             Size = "Pequeña",
 
-                               AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
+                            
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
                             AdoptionStatus = "Disponible",
@@ -150,7 +151,7 @@ public class SeederDB
                             Age = 4,
                             Size = "Pequeño",
 
-                               AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
@@ -168,7 +169,7 @@ public class SeederDB
                             Age = 2,
                             Size = "Mediano",
 
-                               AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
@@ -186,7 +187,7 @@ public class SeederDB
                             Age = 5,
                             Size = "pequeño",
 
-                               AdoptionDetail = new AdoptionDetail
+                            AdoptionDetail = new AdoptionDetail
                         {
                             AdoptionDate = null,
                             AdmissionDate = DateTime.Now,
