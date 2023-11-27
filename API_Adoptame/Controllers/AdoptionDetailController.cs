@@ -56,20 +56,29 @@ namespace API_Adoptame.Controllers
 
         /*GET ALL*/
 
-        [HttpGet, ActionName("Get")]
-        [Route("Get")]//Aqui concateno la URL inicial: URL = api/countries/get
-        public async Task<ActionResult<IEnumerable<AdoptionDetail>>> GetAdoptionDetailAsync()
+        [HttpGet, ActionName("GetAll")]
+        [Route("GetAll")] // Aquí concateno la URL inicial: URL = api/countries/get
+        public async Task<ActionResult<IEnumerable<object>>> GetAdoptionDetailAsync()
         {
-            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsAsync();
+            var adoptionDetails = await _adoptionDetailService.GetAdoptionDetailsAsync();
 
-            if (adoptionDetail == null || !adoptionDetail.Any()) 
+            if (adoptionDetails == null || !adoptionDetails.Any())
             {
-                return NotFound();            
-                
+                return NotFound();
             }
 
-            return Ok(adoptionDetail); 
+            var response = adoptionDetails.Select(adoptionDetail => new
+            {
+                adoptionDetail.IDadoptiondetail,
+                adoptionDetail.AdoptionDate,
+                adoptionDetail.AdmissionDate,
+                adoptionDetail.AdoptionStatus,
+                PetName = adoptionDetail.Pet?.Name // Accede al nombre de la mascota
+            });
+
+            return Ok(response);
         }
+
 
 
 
@@ -104,22 +113,22 @@ namespace API_Adoptame.Controllers
 
 
 
-        /*GET BY ADOPTION DATE*/
+        ///*GET BY ADOPTION DATE*/
 
-        [HttpGet, ActionName("GetByAdoptionDate")]
-        [Route("GetByAdoptionDate/{AdoptionDate}")]
-        public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByAdoptionDetailAsync(DateTime AdoptionDate)
-        {
-            if (AdoptionDate == null) return BadRequest("La Fecha de Adopción es requerido.");
-            //una fecha puede ser null(?
-
-
-            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByAdoptionDateAsync(AdoptionDate);
-            if (adoptionDetail == null) return NotFound();
+        //[HttpGet, ActionName("GetByAdoptionDate")]
+        //[Route("GetByAdoptionDate/{AdoptionDate}")]
+        //public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByAdoptionDetailAsync(DateTime AdoptionDate)
+        //{
+        //    if (AdoptionDate == null) return BadRequest("La Fecha de Adopción es requerido.");
+        //    //una fecha puede ser null(?
 
 
-            return Ok(adoptionDetail);
-        }
+        //    var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByAdoptionDateAsync(AdoptionDate);
+        //    if (adoptionDetail == null) return NotFound();
+
+
+        //    return Ok(adoptionDetail);
+        //}
 
 
 

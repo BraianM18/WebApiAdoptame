@@ -14,7 +14,7 @@ namespace API_Adoptame.Domain.Interfaces
         Task<AdoptionDetail> GetAdoptionDetailsByIdAsync(Guid id);
 
 
-        Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate);
+        //Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate);
 
 
         Task<AdoptionDetail> EditAdoptionDetailsAsync(AdoptionDetail adoptiondetail);

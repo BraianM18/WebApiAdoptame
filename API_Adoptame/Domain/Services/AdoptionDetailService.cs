@@ -51,12 +51,13 @@ namespace API_Adoptame.Domain.Services
 
         public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync()
         {
+            var adoptionDetails = await _context.AdoptionDetails
+                .Include(a => a.Pet) // Incluye la propiedad de navegación Pet
+                .ToListAsync();
 
-            var adoptionDetail = await _context.AdoptionDetails.ToListAsync();
-
-            return adoptionDetail;
-
+            return adoptionDetails;
         }
+
 
 
 
@@ -74,13 +75,13 @@ namespace API_Adoptame.Domain.Services
 
 
 
-        /*GET BY ADOPTION DATE*/
+        ///*GET BY ADOPTION DATE*/
 
 
-        public async Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate)
-        {
-            return await _context.AdoptionDetails.FirstOrDefaultAsync(x => x.AdoptionDate == AdoptionDate);
-        }
+        //public async Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate)
+        //{
+        //    return await _context.AdoptionDetails.FirstOrDefaultAsync(x => x.AdoptionDate == AdoptionDate);
+        //}
 
 
 
