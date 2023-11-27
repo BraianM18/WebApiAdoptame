@@ -63,6 +63,7 @@ namespace API_Adoptame.Domain.Services
         {
             return await _context.Fundations
                 .Include(f => f.Pets)
+                    .ThenInclude(p => p.AdoptionDetail)  // Incluye el AdoptionDetail asociado a la mascota
                 .ToListAsync();
         }
 

@@ -46,7 +46,15 @@ public class SeederDB
                             Kind = "Perro",
                             Race = "Labrador",
                             Age = 2,
-                            Size = "Grande"
+                            Size = "Grande",
+
+                            AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         },
 
                         new Pet
@@ -56,7 +64,15 @@ public class SeederDB
                             Kind = "Gato",
                             Race = "Siames",
                             Age = 3,
-                            Size = "Pequeño"
+                            Size = "Pequeño",
+
+                            AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         },
 
                         new Pet
@@ -66,7 +82,16 @@ public class SeederDB
                             Kind = "Gato",
                             Race = "Meico",
                             Age = 3,
-                            Size = "Mediana"
+                            Size = "Mediana",
+
+                                AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
+
                         },
 
                         new Pet
@@ -76,7 +101,15 @@ public class SeederDB
                             Kind = "Perro",
                             Race = "Pitbull",
                             Age = 4,
-                            Size = "Grande"
+                            Size = "Grande",
+
+                               AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         }
 
                     }
@@ -97,7 +130,15 @@ public class SeederDB
                             Kind = "Gato",
                             Race = "Siames",
                             Age = 6,
-                            Size = "Pequeña"
+                            Size = "Pequeña",
+
+                               AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         },
 
                         new Pet
@@ -107,7 +148,15 @@ public class SeederDB
                             Kind = "Gato",
                             Race = "Criollo",
                             Age = 4,
-                            Size = "Pequeño"
+                            Size = "Pequeño",
+
+                               AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         },
 
                         new Pet
@@ -117,7 +166,15 @@ public class SeederDB
                             Kind = "Perro",
                             Race = "Husky",
                             Age = 2,
-                            Size = "Mediano"
+                            Size = "Mediano",
+
+                               AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         },
 
                         new Pet
@@ -127,7 +184,15 @@ public class SeederDB
                             Kind = "Perro",
                             Race = "Chiguagua",
                             Age = 5,
-                            Size = "pequeño"
+                            Size = "pequeño",
+
+                               AdoptionDetail = new AdoptionDetail
+                        {
+                            AdoptionDate = null,
+                            AdmissionDate = DateTime.Now,
+                            AdoptionStatus = "Disponible",
+                            CreateDate = DateTime.Now
+                        }
                         }
 
                     }

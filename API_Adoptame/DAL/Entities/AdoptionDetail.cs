@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API_Adoptame.DAL.Entities
 {
@@ -27,8 +28,12 @@ namespace API_Adoptame.DAL.Entities
         public string AdoptionStatus { get; set; }
 
 
-       /* public Pet? Pet { get; set; }
-        [Display(Name = "ID de la Mascota")]
-        public Guid PetID { get; set; } //FK  */
+        /* public Pet? Pet { get; set; }
+         [Display(Name = "ID de la Mascota")]
+         public Guid PetID { get; set; } //FK  */
+        public Guid? PetID { get; set; } // FK
+
+        [JsonIgnore]
+        public Pet Pet { get; set; }
     }
 }

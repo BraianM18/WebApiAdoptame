@@ -37,7 +37,7 @@ namespace API_Adoptame.Domain.Services
         //        pet.UserID = userId;
         //        pet.Fundation = await _context.Fundations.FirstOrDefaultAsync(f => f.IDfundation == fundationId);
         //        pet.User = await _context.Users.FirstOrDefaultAsync(u => u.IDuser == userId);
-                
+
         //        pet.ModifiedDate = null;
 
         //        _context.Pets.Add(pet);
@@ -83,25 +83,52 @@ namespace API_Adoptame.Domain.Services
 
         public async Task<Pet> CreatePetsAsync(Pet pet)
         {
-            try
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                pet.IDpet = Guid.NewGuid();
-                pet.CreateDate = DateTime.Now;
+                try
+                {
+                    pet.IDpet = Guid.NewGuid();
+                    pet.CreateDate = DateTime.Now;
 
+                    // Configurar la relación con AdoptionDetail
+                    var adoptionDetail = new AdoptionDetail
+                    {
+                        AdoptionDate = null,
+                        AdmissionDate = DateTime.Now,
+                        AdoptionStatus = "Disponible",
+                        PetID = pet.IDpet // Configura la relación aquí usando la clave foránea
+                    };
 
-                _context.Pets.Add(pet);
-                await _context.SaveChangesAsync();
+                    // Agregar la mascota al contexto
+                    _context.Pets.Add(pet);
 
-                return pet;
-            }
-            catch (DbUpdateException dbUpdateException)
-            {
+                    // Guardar cambios en la base de datos (aquí se crea la mascota)
+                    await _context.SaveChangesAsync();
 
-                throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+                    // Configurar la relación inversa
+                    pet.AdoptionDetail = adoptionDetail;
+
+                    // Guardar cambios en la base de datos (aquí se crea el AdoptionDetail)
+                    await _context.SaveChangesAsync();
+
+                    // Confirmar la transacción
+                    transaction.Commit();
+
+                    return pet;
+                }
+                catch (DbUpdateException dbUpdateException)
+                {
+                    // En caso de error, hacer rollback de la transacción
+                    transaction.Rollback();
+                    throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
+                }
             }
         }
 
-        
+
+
+
+
 
 
 

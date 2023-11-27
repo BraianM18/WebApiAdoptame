@@ -61,16 +61,17 @@ namespace API_Adoptame.Domain.Services
 
 
 
-  
+
         /*GET BY ID*/
 
         public async Task<AdoptionDetail> GetAdoptionDetailsByIdAsync(Guid id)
         {
-            return await _context.AdoptionDetails.FirstOrDefaultAsync(a => a.IDadoptiondetail == id); //es un método propio del db context (db set)
-
+            return await _context.AdoptionDetails
+                .Include(a => a.Pet) // Incluye la propiedad de navegación Pet
+                .FirstOrDefaultAsync(a => a.IDadoptiondetail == id);
         }
 
-      
+
 
 
         /*GET BY ADOPTION DATE*/

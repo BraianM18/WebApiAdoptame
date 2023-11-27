@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API_Adoptame.DAL.Entities
 {
@@ -49,7 +50,11 @@ namespace API_Adoptame.DAL.Entities
         //public Guid UserID { get; set; } //FK
 
 
-        //[Display(Name = "Detalle de adopcion")]
-        //public ICollection<AdoptionDetail>? AdoptionDetails { get; set; }
+        [Display(Name = "ID de la Adopción")]
+        
+        public Guid? AdoptionDetailId { get; set; } // FK
+
+        [JsonIgnore]
+        public AdoptionDetail? AdoptionDetail { get; set; }
     }
 }

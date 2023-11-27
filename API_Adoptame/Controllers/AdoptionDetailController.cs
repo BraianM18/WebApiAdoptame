@@ -78,19 +78,27 @@ namespace API_Adoptame.Controllers
         /*GET BY ID*/
 
         [HttpGet, ActionName("GetById")]
-        [Route("GetById/{id}")] 
+        [Route("GetById/{id}")]
         public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByIdAsync(Guid id)
         {
-            if (id == null)   return BadRequest("El Id es requerido.");
-            
+            if (id == null)
+                return BadRequest("El Id es requerido.");
 
+            var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByIdAsync(id);
+            if (adoptionDetail == null)
+                return NotFound();
 
-           var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByIdAsync(id);
-           if (adoptionDetail == null) return NotFound();
-
-
-           return Ok(adoptionDetail);
+            // Puedes personalizar la forma en que devuelves la respuesta según tus necesidades.
+            return Ok(new
+            {
+                adoptionDetail.IDadoptiondetail,
+                adoptionDetail.AdoptionDate,
+                adoptionDetail.AdmissionDate,
+                adoptionDetail.AdoptionStatus,
+                PetName = adoptionDetail.Pet?.Name // Accede al nombre de la mascota
+            });
         }
+
 
 
 

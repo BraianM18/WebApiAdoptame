@@ -15,7 +15,12 @@ namespace API_Adoptame.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
+
+            //TABLA PET//
+            modelBuilder.Entity<Pet>()
+        .HasOne(p => p.AdoptionDetail)
+        .WithOne(ad => ad.Pet)
+        .HasForeignKey<AdoptionDetail>(ad => ad.PetID);
 
             //TABLA USUARIO//
             modelBuilder.Entity<User>().HasIndex(c => c.Email).IsUnique(); //Para que solo hayan correos únicos
