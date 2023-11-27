@@ -10,20 +10,12 @@ namespace API_Adoptame.Controllers
     public class PetController : Controller
     {
 
-
-
-
         private readonly IPetService _petService;
-
-
-
 
         public PetController(IPetService petService)
         {
             _petService = petService;
         }
-
-
 
 
         /*CREATE*/
@@ -70,58 +62,6 @@ namespace API_Adoptame.Controllers
         }
 
 
-
-        //[HttpPost, ActionName("Create")]
-        //[Route("Create")]
-        //public async Task<ActionResult> CreatePetsAsync(Pet pet, Guid fundationId, Guid userId)
-        //{
-        //    try
-        //    {
-        //        var createdPet = await _petService.CreatePetsAsync(pet, fundationId, userId);
-        //        if (createdPet == null)
-        //        {
-        //            return NotFound();// = 404 Http Status Code
-
-        //        }
-
-        //        return Ok(createdPet);//Retorne un 200 y el objeto Detalle de adopcion
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error al crear el detalle de adopción: {ex.Message}");
-
-        //        // Puedes devolver un código de error 500 (Internal Server Error) con un mensaje descriptivo
-        //        return StatusCode(500, "Se ha producido un error en el servidor al intentar crear el detalle de adopción.");
-        //    }
-        //}
-
-
-
-        //[HttpPut, ActionName("EditPet")]
-        //[Route("EditPet")]
-        //public async Task<ActionResult> EditPetsAsync(Pet pet, Guid fundationId)
-        //{
-        //    try
-        //    {
-        //        var editedPet = await _petService.EditPetsAsync(pet,fundationId);
-        //        if (editedPet == null)
-        //        {
-        //            return NotFound();// = 404 Http Status Code
-
-        //        }
-
-        //        return Ok(editedPet);//Retorne un 200 y el objeto Detalle de adopcion
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        if (ex.Message.Contains("duplicate"))
-        //        {
-        //            return Conflict(String.Format("{0} ya existe", pet.Name));
-        //        }
-
-        //        return Conflict(ex.Message);
-        //    }
-        //}*/
         /*GET ALL*/
 
         [HttpGet, ActionName("Get")]
@@ -139,9 +79,6 @@ namespace API_Adoptame.Controllers
             return Ok(pet);
         }
         
-
-
-
 
         /*GET BY ID*/
 
@@ -167,9 +104,6 @@ namespace API_Adoptame.Controllers
         }
 
 
-
-
-
         /*GET BY NAME*/
 
         [HttpGet, ActionName("GetByName")]
@@ -192,9 +126,6 @@ namespace API_Adoptame.Controllers
 
             return Ok(pet);
         }
-
-
-
 
 
         /*UPDATE*/
@@ -226,9 +157,6 @@ namespace API_Adoptame.Controllers
         }
         
 
-
-
-
         /*DELETE*/
 
         [HttpDelete, ActionName("Delete")]
@@ -245,8 +173,6 @@ namespace API_Adoptame.Controllers
             
             
         }
-
-
 
 
     }

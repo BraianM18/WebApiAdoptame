@@ -19,8 +19,6 @@ namespace API_Adoptame.Domain.Services
 
 
 
-
-
         /*CREATE*/
 
         public async Task<AdoptionDetail> CreateAdoptionDetailsAsync(AdoptionDetail adoptionDetail)
@@ -44,9 +42,6 @@ namespace API_Adoptame.Domain.Services
         }
 
 
-
-
-
         /*GET ALL*/
 
         public async Task<IEnumerable<AdoptionDetail>> GetAdoptionDetailsAsync()
@@ -59,10 +54,6 @@ namespace API_Adoptame.Domain.Services
         }
 
 
-
-
-
-
         /*GET BY ID*/
 
         public async Task<AdoptionDetail> GetAdoptionDetailsByIdAsync(Guid id)
@@ -71,20 +62,6 @@ namespace API_Adoptame.Domain.Services
                 .Include(a => a.Pet) // Incluye la propiedad de navegación Pet
                 .FirstOrDefaultAsync(a => a.IDadoptiondetail == id);
         }
-
-
-
-
-        ///*GET BY ADOPTION DATE*/
-
-
-        //public async Task<AdoptionDetail> GetAdoptionDetailsByAdoptionDateAsync(DateTime AdoptionDate)
-        //{
-        //    return await _context.AdoptionDetails.FirstOrDefaultAsync(x => x.AdoptionDate == AdoptionDate);
-        //}
-
-
-
 
 
         /*UPDATE*/
@@ -107,9 +84,6 @@ namespace API_Adoptame.Domain.Services
                 throw new Exception(dbUpdateException.InnerException?.Message ?? dbUpdateException.Message);
             }
         }
-
-
-
 
 
         /*DELETE*/
@@ -138,9 +112,5 @@ namespace API_Adoptame.Domain.Services
 
         }
 
-
-
-
-        /**/
     }
 }

@@ -113,27 +113,6 @@ namespace API_Adoptame.Controllers
 
 
 
-        ///*GET BY ADOPTION DATE*/
-
-        //[HttpGet, ActionName("GetByAdoptionDate")]
-        //[Route("GetByAdoptionDate/{AdoptionDate}")]
-        //public async Task<ActionResult<AdoptionDetail>> GetAdoptionDetailsByAdoptionDetailAsync(DateTime AdoptionDate)
-        //{
-        //    if (AdoptionDate == null) return BadRequest("La Fecha de Adopción es requerido.");
-        //    //una fecha puede ser null(?
-
-
-        //    var adoptionDetail = await _adoptionDetailService.GetAdoptionDetailsByAdoptionDateAsync(AdoptionDate);
-        //    if (adoptionDetail == null) return NotFound();
-
-
-        //    return Ok(adoptionDetail);
-        //}
-
-
-
-
-
         /*UPDATE*/
 
         [HttpPut, ActionName("EditAdoptionDetail")]

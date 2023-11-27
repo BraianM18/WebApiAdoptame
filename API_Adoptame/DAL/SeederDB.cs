@@ -227,34 +227,8 @@ public class SeederDB
 
             });
 
-            ///*DETALLES DE ADOPCION*/
-            //_context.AdoptionDetails.Add(new AdoptionDetail
-            //{
-            //    AdoptionDate = DateTime.Now,
-            //    AdmissionDate = DateTime.Now,
-            //    AdoptionStatus = "Adoptado",
-            //    CreateDate = DateTime.Now
-
-            //});
-
-            //_context.AdoptionDetails.Add(new AdoptionDetail
-            //{
-            //    AdoptionDate = null,
-            //    AdmissionDate = DateTime.Now,
-            //    AdoptionStatus = "No Adoptado",
-            //    CreateDate = DateTime.Now
-
-            //});
-
-            //_context.AdoptionDetails.Add(new AdoptionDetail
-            //{
-            //    AdoptionDate = null,
-            //    AdmissionDate = DateTime.Now,
-            //    AdoptionStatus = "En Trámite",
-            //    CreateDate = DateTime.Now
-
-            //});
+       
         }
-    }//
+    }
 }
 
