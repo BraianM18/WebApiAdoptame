@@ -68,6 +68,22 @@ namespace API_Adoptame.Controllers
             return Ok(fundation);
         }
 
+        //GET FUNDATIONSWITHPETS
+
+        [HttpGet, ActionName("GetAllFundationsWithPets")]
+        [Route("GetAllFundationsWithPets")] // URL = api/fundation/GetAllFundationsWithPets
+        public async Task<ActionResult<IEnumerable<Fundation>>> GetAllFundationsWithPetsAsync()
+        {
+            var fundationsWithPets = await _fundationService.GetAllFundationsWithPetsAsync();
+
+            if (fundationsWithPets == null || !fundationsWithPets.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(fundationsWithPets);
+        }
+
 
 
 

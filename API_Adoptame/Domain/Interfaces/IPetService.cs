@@ -7,16 +7,16 @@ namespace API_Adoptame.Domain.Interfaces
 
         Task<Pet> CreatePetsAsync(Pet pet);
 
-        /*Prueba
+        
         Task<IEnumerable<Pet>> GetPetsByFundationsIdAsync(Guid fundationId);
 
 
-        Task<Pet> CreatePetsAsync(Pet pet, Guid fundationId, Guid userId);
+        //Task<Pet> CreatePetsAsync(Pet pet, Guid fundationId, Guid userId);
 
 
-        Task<Pet> EditPetsAsync(Pet pet, Guid fundationId);
+        //Task<Pet> EditPetsAsync(Pet pet, Guid fundationId);
 
-        prueba*/
+        //prueba*/
         Task<IEnumerable<Pet>> GetPetsAsync();
 
 

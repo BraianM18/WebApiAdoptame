@@ -36,6 +36,6 @@ namespace API_Adoptame.DAL.Entities
 
 
         [Display(Name = "Mascotas")]
-        public List<Pet>? Pets { get; set; }
+        public List<Pet> Pets { get; set; }
     }
 }

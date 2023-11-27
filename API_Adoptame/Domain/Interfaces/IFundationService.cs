@@ -9,6 +9,8 @@ namespace API_Adoptame.Domain.Interfaces
 
         Task<IEnumerable<Fundation>> GetFundationsAsync();
 
+        Task<IEnumerable<Fundation>> GetAllFundationsWithPetsAsync();
+
 
         Task<Fundation> GetFundationsByIdAsync(Guid id);
 

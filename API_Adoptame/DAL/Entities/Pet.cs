@@ -41,7 +41,7 @@ namespace API_Adoptame.DAL.Entities
         [Display(Name = "ID de la Fundación")]
         public Guid FundationID { get; set; } //FK
 
-        public Fundation? Fundation { get; set; }
+        //public Fundation? Fundation { get; set; }
 
         //public User? User { get; set; }
 

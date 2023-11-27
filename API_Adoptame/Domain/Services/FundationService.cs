@@ -58,10 +58,16 @@ namespace API_Adoptame.Domain.Services
 
         }
 
+        //GET FUNDATIONSWITHPETS
+        public async Task<IEnumerable<Fundation>> GetAllFundationsWithPetsAsync()
+        {
+            return await _context.Fundations
+                .Include(f => f.Pets)
+                .ToListAsync();
+        }
 
 
 
-        
         /*GET BY ID*/
 
         public async Task<Fundation> GetFundationsByIdAsync(Guid id)
